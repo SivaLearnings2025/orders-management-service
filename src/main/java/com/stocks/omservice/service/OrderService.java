@@ -13,7 +13,6 @@ import java.util.List;
 
 @Service
 public class OrderService {
-    //private final InventoryController inventoryController = null;
     private final InventoryClient inventoryClient = null;
     private final OrderRepository orderRepository;
     private final KafkaTemplate<String, String> kafkaTemplate = null;
