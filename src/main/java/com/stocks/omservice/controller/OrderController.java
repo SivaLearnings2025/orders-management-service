@@ -17,12 +17,13 @@ import java.util.List;
 public class OrderController {
     @Autowired
     private OrderService orderService;
+
     @PostMapping
     public ResponseEntity<Order> placeOrder(@Valid @RequestBody Order order){
        return ResponseEntity.ok(orderService.placeOrder(order));
     }
 
-    @GetMapping
+    @GetMapping("/getAllOrders")
     public ResponseEntity<List<Order>> getAllOrders(){
         return ResponseEntity.ok(orderService.getAllOrders());
     }
@@ -39,6 +40,4 @@ public class OrderController {
     public ResponseEntity<Order> cancelOrder(@PathVariable Long id){
         return ResponseEntity.ok((Order) orderService.cancelOrder(id));
     }
-
-
 }
