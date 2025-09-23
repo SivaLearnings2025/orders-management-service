@@ -26,7 +26,6 @@ public class OrderService {
         order.setStatus(!available || order.getType().equalsIgnoreCase("SELL") ? OrderStatus.PENDING : OrderStatus.CANCELLED);
 
         Order saved = orderRepository.save(order);
-
         kafkaTemplate.send("order-events", "Order placed with id" + order.getId() + "status" + order.getStatus());
         return saved;
     }
